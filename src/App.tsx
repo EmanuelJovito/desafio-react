@@ -1,12 +1,17 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 
-function App() {
-  const users = useState(0)
+export default function App() {
+  const [users, setUsers] = useState([])
 
-  fetch('/users.json')
-    .then(res=> res.json())
-    .then(data => users = data)
+  function ApiCall() {
+    fetch('/users.json')
+      .then(res=> res.json())
+      .then(data => setUsers(data))
+  }
+
+  ApiCall()
+  
   return (
     <>
       <h1>Lista de usuários:</h1>
@@ -14,5 +19,3 @@ function App() {
     </>
   )
 }
-
-export default App
