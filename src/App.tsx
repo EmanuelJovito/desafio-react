@@ -10,7 +10,9 @@ export default function App() {
       .then(data => setUsers(data))
   }
 
-  ApiCall()
+  setTimeout(() => {
+    ApiCall()
+  }, 5000)
   
   return (
     <>
